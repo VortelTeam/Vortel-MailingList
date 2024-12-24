@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import PinPoint from "../../../public/Ontario-pin.png";
+import LabelIndc from "../../../public/label-indicator.svg";
+import Image from "next/image";
 
 const InteractiveMap = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -7,6 +9,7 @@ const InteractiveMap = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const previousTimeRef = useRef(Date.now());
+  const [showLabel, setShowLabel] = useState(true);
 
   useEffect(() => {
     if (svgRef.current) {
@@ -107,11 +110,29 @@ const InteractiveMap = () => {
     };
   }, [updateHexagons]);
 
+  useEffect(() => {
+    const cachedState = localStorage.getItem("showLabel");
+    if (cachedState !== null) {
+      setShowLabel(JSON.parse(cachedState));
+    }
+  }, []);
+
+  const handleLabelToggle = () => {
+    setShowLabel(false);
+    localStorage.setItem("showLabel", JSON.stringify(false));
+  };
+
   return (
     <div className="w-full h-full">
+      {
+        // if show label is true show the LabelIndc component
+        showLabel && (
+          <LabelIndc className="sticky left-0 right-0 ml-auto mr-auto" />
+        )
+      }
       <svg
         ref={svgRef}
-        className="w-screen"
+        className="w-screen z-10"
         viewBox="0 0 1600 850"
         preserveAspectRatio="xMidYMid meet"
         onMouseMove={handleMouseMove}
@@ -9004,12 +9025,12 @@ const InteractiveMap = () => {
           />
         </g>
         <image
+          onClick={handleLabelToggle}
           href={PinPoint.src}
           width="150"
-          height="150"
-          x={markerPosition.x - 60}
-          y={markerPosition.y - 80}
-          className="pointer-events-none"
+          x={markerPosition.x - 59}
+          y={markerPosition.y - 65}
+          className="cursor-pointer bg-blue-400"
         />
       </svg>
     </div>
