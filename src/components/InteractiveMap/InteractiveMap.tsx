@@ -1,15 +1,52 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import PinPoint from "../../../public/Ontario-pin.png";
 import LabelIndc from "../../../public/label-indicator.svg";
-import Image from "next/image";
+import type { PinData } from "@/types/gallery";
+import Gallery from "../Gallery/Gallery";
+// importing the Images
+import OntarioPM from "../../../public/Ontario-PM.png";
+import OntarioBridle from "../../../public/Ontario-bridle.png";
+import OntarioWL from "../../../public/Ontario-WL.png";
 
-const InteractiveMap = () => {
+// Data for the pins
+const pinsData: PinData[] = [
+  {
+    id: "ontario",
+    name: "Ontario",
+    coordinates: { x: 434.137, y: 290.303 },
+    images: [
+      {
+        src: OntarioPM.src,
+        caption: "Yes, that is our Prime Minister!",
+      },
+      {
+        src: OntarioBridle.src,
+        caption: "Elegant service in Toronto's exclusive bridle path",
+      },
+      {
+        src: OntarioWL.src,
+        caption: "Our unique champagne dress hostess",
+      },
+    ],
+  },
+];
+
+interface InteractiveMapProps {
+  onGalleryOpen: () => void;
+  onGalleryClose: () => void;
+}
+
+const InteractiveMap = ({
+  onGalleryOpen,
+  onGalleryClose,
+}: InteractiveMapProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [markerPosition, setMarkerPosition] = useState({ x: 0, y: 0 });
   const svgRef = useRef<SVGSVGElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const previousTimeRef = useRef(Date.now());
   const [showLabel, setShowLabel] = useState(true);
+  const [activePin, setActivePin] = useState<PinData | null>(null);
 
   useEffect(() => {
     if (svgRef.current) {
@@ -117,19 +154,26 @@ const InteractiveMap = () => {
     }
   }, []);
 
-  const handleLabelToggle = () => {
+  const handlePinClick = (
+    event: React.MouseEvent<SVGImageElement, MouseEvent>,
+    pin: PinData
+  ) => {
     setShowLabel(false);
     localStorage.setItem("showLabel", JSON.stringify(false));
+    setActivePin(pin);
+    onGalleryOpen();
+  };
+
+  const handleCloseGallery = () => {
+    setActivePin(null);
+    onGalleryClose();
   };
 
   return (
     <div className="w-full h-full">
-      {
-        // if show label is true show the LabelIndc component
-        showLabel && (
-          <LabelIndc className="sticky left-0 right-0 ml-auto mr-auto" />
-        )
-      }
+      {showLabel && (
+        <LabelIndc className="sticky left-0 right-0 ml-auto mr-auto" />
+      )}
       <svg
         ref={svgRef}
         className="w-screen z-10"
@@ -9024,15 +9068,26 @@ const InteractiveMap = () => {
             fill="#D7D7D7"
           />
         </g>
-        <image
-          onClick={handleLabelToggle}
-          href={PinPoint.src}
-          width="150"
-          x={markerPosition.x - 59}
-          y={markerPosition.y - 65}
-          className="cursor-pointer bg-blue-400"
-        />
+        {pinsData.map((pin) => (
+          <image
+            key={pin.id}
+            onClick={(event) => handlePinClick(event, pin)}
+            href={PinPoint.src}
+            width="150"
+            x={markerPosition.x - 58.5}
+            y={markerPosition.y - 62}
+            className="cursor-pointer bg-blue-400 hover:-translate-y-1 transform transition-transform duration-300"
+          />
+        ))}
       </svg>
+      {activePin && (
+        <Gallery
+          images={activePin.images}
+          isOpen={!!activePin}
+          onClose={handleCloseGallery}
+          location={activePin.name}
+        />
+      )}
     </div>
   );
 };

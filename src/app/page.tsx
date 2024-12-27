@@ -1,37 +1,62 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
-import Image from "next/image";
-import SvgMap from "../../public/map.svg";
+import Topbar from "@/components/Topbar/Topbar";
 
 export default function Home() {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
   return (
     <main className="h-screen overflow-x-hidden">
       <div className="py-8">
-        <h1 className="text-4xl font-bold text-[#8B4513]">SHIFTED</h1>
-        <div className="mt-16 text-center text-black">
-          <h2 className="text-5xl font-bold">Shift the way you work.</h2>
-          <p className="mt-6 text-xl">
-            Revolutionizing how businesses connect with top-tier gig talent.
-            <br />
-            Sign up now to stay in the loop as we redefine the future of work.
-          </p>
-
-          <div className="mt-8">
-            <p className="mb-2 text-sm">Join our exclusive mailing list</p>
-            <div className="flex justify-center gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-72 rounded-lg border border-input bg-background px-4 py-2"
-              />
-              <div>Get Started</div>
+        <div className="flex-col">
+          <Topbar />
+          <div
+            className={`flex flex-col w-screen text-black font-poppins px-8 transition-all duration-300 h-screen ${
+              isGalleryOpen ? "items-start" : "items-center"
+            } justify-center items-center sm:justify-start sm:items-start sm:h-auto`}
+          >
+            <div
+              className={`text-3xl mt-5 w-full ${
+                isGalleryOpen ? "text-start xl:w-1/2" : "text-center"
+              }`}
+            >
+              Powering the Future of Workforce Management
+            </div>
+            <div
+              className={`text-xl flex mt-2 transition-all duration-300 ${
+                isGalleryOpen
+                  ? "justify-start text-start"
+                  : "w-full justify-center text-center"
+              }`}
+            >
+              Combining speed, precision, and innovation to help you hire, pay,{" "}
+              <br className="hidden md:inline" />
+              and manage talent effortlessly—anywhere in the world.
+            </div>
+            <div className={`w-fit flex flex-col items-center mt-16 mx-auto ${isGalleryOpen ? "mx-0 items-start" : ""}`}>
+              <div className="flex text-left py-2 w-full">
+                Join our exclusive mailing list
+              </div>
+              <div className="flex flex-col items-center align-middle gap-4 w-full xs:flex-row">
+                <input
+                  type="text"
+                  placeholder="Enter your email"
+                  className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
+                />
+                <div className=" w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200">
+                  Get Started
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="w-screen mt-12">
-          <InteractiveMap />
+        <div className="hidden sm:flex sm:w-screen sm:mt-12 ">
+          <InteractiveMap
+            onGalleryOpen={() => setIsGalleryOpen(true)}
+            onGalleryClose={() => setIsGalleryOpen(false)}
+          />
         </div>
       </div>
     </main>
