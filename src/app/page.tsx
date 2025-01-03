@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
+// Importing the Components
+import WelcomePage from "@/components/WelcomePage/WelcomePage";
 import Topbar from "@/components/Topbar/Topbar";
+import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
 
 export default function Home() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   return (
-    <main className="h-screen overflow-x-hidden">
+    <main className="h-screen overflow-hidden relative">
+      <WelcomePage />
       <div className="py-8">
         <div className="flex-col">
           <Topbar />
@@ -35,7 +38,11 @@ export default function Home() {
               <br className="hidden md:inline" />
               and manage talent effortlessly—anywhere in the world.
             </div>
-            <div className={`w-fit flex flex-col items-center mt-16 mx-auto ${isGalleryOpen ? "mx-0 items-start" : ""}`}>
+            <div
+              className={`w-fit flex flex-col items-center mt-16 ${
+                isGalleryOpen ? "mx-0 items-start" : "mx-auto"
+              }`}
+            >
               <div className="flex text-left py-2 w-full">
                 Join our exclusive mailing list
               </div>
@@ -52,7 +59,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden sm:flex sm:w-screen sm:mt-12 ">
+        <div className="hidden sm:flex sm:w-screen sm:mt-12">
           <InteractiveMap
             onGalleryOpen={() => setIsGalleryOpen(true)}
             onGalleryClose={() => setIsGalleryOpen(false)}

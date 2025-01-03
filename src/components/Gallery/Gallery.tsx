@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import type { GalleryImage } from '@/types/gallery'
+import Image from 'next/image'
 
 interface GalleryProps {
   images: GalleryImage[]
@@ -40,10 +41,12 @@ export default function Gallery({ images, isOpen, onClose, location }: GalleryPr
 
         <div className="flex-1 relative">
           <div className="absolute inset-0 m-8">
-            <img
+            <Image
               src={images[currentIndex].src}
               alt={images[currentIndex].caption}
               className="w-full object-cover"
+              width={600}
+              height={400}
             />
           </div>
         </div>
