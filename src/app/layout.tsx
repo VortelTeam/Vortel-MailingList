@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Vortel - Powering the Future",
   description: "Powering the Future of Workforce Management",
-  icons: {
-    icon: "/logo.ico"
-  }
 };
 
 export default function RootLayout({
