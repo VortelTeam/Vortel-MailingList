@@ -8,6 +8,7 @@ import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
 
 export default function Home() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [email, setEmail] = useState("");
 
   return (
     <main className="h-screen overflow-hidden relative">
@@ -46,16 +47,28 @@ export default function Home() {
               <div className="flex text-left py-2 w-full">
                 Join our exclusive mailing list
               </div>
-              <div className="flex flex-col items-center align-middle gap-4 w-full xs:flex-row">
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
-                />
-                <div className="w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200">
-                  Get Started
+              <form
+                action="https://public.herotofu.com/v1/8b326ca0-ca65-11ef-9788-bfcf6eb47463"
+                method="post"
+                acceptCharset="UTF-8"
+              >
+                <div className="flex flex-col items-center align-middle gap-4 w-full xs:flex-row">
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
+                  />
+                  <button
+                  type="submit"
+                    className="w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200"
+                  >
+                    Get Started
+                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
