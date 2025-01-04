@@ -52,7 +52,7 @@ export default function Home() {
                   placeholder="Enter your email"
                   className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
                 />
-                <div className=" w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200">
+                <div className="w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200">
                   Get Started
                 </div>
               </div>

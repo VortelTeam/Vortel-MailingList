@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Vortel - Powering the Future",
   description: "Powering the Future of Workforce Management",
+  icons: {
+    icon: "/logo.ico"
+  }
 };
 
 export default function RootLayout({
@@ -25,9 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <link rel="icon" href="/logo.ico" />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
