@@ -11,6 +11,17 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "brand-brown": "#774936",
+        "button-bg": "#E6B8A2",
+        highlight: "#EDC4B3",
+      },
+      fontFamily: {
+        otomanopee: ["'Otomanopee One'", "sans-serif"],
+        poppins: ["'Poppins'", "sans-serif"],
+      },
+      screens: {
+        xs: "495px",
+        "1xl": "1365px",
       },
     },
   },
