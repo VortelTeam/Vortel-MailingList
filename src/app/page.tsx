@@ -8,7 +8,6 @@ import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
 
 export default function Home() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const [email, setEmail] = useState("");
 
   return (
     <main className="h-screen overflow-hidden relative">
@@ -57,7 +56,6 @@ export default function Home() {
                     type="email"
                     name="email"
                     required
-                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
                   />
