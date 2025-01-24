@@ -71,10 +71,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hidden sm:flex sm:w-screen sm:mt-12">
-          <InteractiveMap
-            onGalleryOpen={() => setIsGalleryOpen(true)}
-            onGalleryClose={() => setIsGalleryOpen(false)}
-          />
+          <InteractiveMap />
         </div>
       </div>
     </main>

@@ -14,39 +14,15 @@ const pinsData: PinData[] = [
     id: "ontario",
     name: "Ontario",
     coordinates: { x: 434.137, y: 290.303 },
-    images: [
-      {
-        src: OntarioPM.src,
-        caption: "Yes, that is our Prime Minister!",
-      },
-      {
-        src: OntarioBridle.src,
-        caption: "Elegant service in Toronto's exclusive bridle path",
-      },
-      {
-        src: OntarioWL.src,
-        caption: "Our unique champagne dress hostess",
-      },
-    ],
   },
 ];
 
-interface InteractiveMapProps {
-  onGalleryOpen: () => void;
-  onGalleryClose: () => void;
-}
-
-const InteractiveMap = ({
-  onGalleryOpen,
-  onGalleryClose,
-}: InteractiveMapProps) => {
+const InteractiveMap = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [markerPosition, setMarkerPosition] = useState({ x: 0, y: 0 });
   const svgRef = useRef<SVGSVGElement | null>(null);
   const frameRef = useRef<number | null>(null);
   const previousTimeRef = useRef(Date.now());
-  const [showLabel, setShowLabel] = useState(true);
-  const [activePin, setActivePin] = useState<PinData | null>(null);
 
   useEffect(() => {
     if (svgRef.current) {
@@ -147,33 +123,9 @@ const InteractiveMap = ({
     };
   }, [updateHexagons]);
 
-  useEffect(() => {
-    const cachedState = localStorage.getItem("showLabel");
-    if (cachedState !== null) {
-      setShowLabel(JSON.parse(cachedState));
-    }
-  }, []);
-
-  // const handlePinClick = (
-  //   event: React.MouseEvent<SVGImageElement, MouseEvent>,
-  //   pin: PinData
-  // ) => {
-  //   setShowLabel(false);
-  //   localStorage.setItem("showLabel", JSON.stringify(false));
-  //   setActivePin(pin);
-  //   onGalleryOpen();
-  // };
-
-  // const handleCloseGallery = () => {
-  //   setActivePin(null);
-  //   onGalleryClose();
-  // };
-
   return (
     <div className="w-full h-full">
-      {showLabel && (
-        <LabelIndc className="sticky left-0 right-0 ml-auto mr-auto" />
-      )}
+      <LabelIndc className="sticky left-0 right-0 ml-auto mr-auto" />
       <svg
         ref={svgRef}
         className="w-screen z-10"
@@ -9071,7 +9023,6 @@ const InteractiveMap = ({
         {pinsData.map((pin) => (
           <image
             key={pin.id}
-            // onClick={(event) => handlePinClick(event, pin)}
             href={PinPoint.src}
             width="120"
             x={markerPosition.x - 46.8}
@@ -9080,14 +9031,6 @@ const InteractiveMap = ({
           />
         ))}
       </svg>
-      {/* {activePin && (
-        <Gallery
-          images={activePin.images}
-          isOpen={!!activePin}
-          onClose={handleCloseGallery}
-          location={activePin.name}
-        />
-      )} */}
     </div>
   );
 };

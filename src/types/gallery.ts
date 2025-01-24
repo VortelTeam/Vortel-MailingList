@@ -6,7 +6,6 @@ export interface GalleryImage {
 export interface PinData {
   id: string;
   name: string;
-  images: GalleryImage[];
   coordinates: {
     x: number;
     y: number;
