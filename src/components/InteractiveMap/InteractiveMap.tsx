@@ -2,11 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import PinPoint from "../../../public/Ontario-pin.png";
 import LabelIndc from "../../../public/label-indicator.svg";
 import type { PinData } from "@/types/gallery";
-import Gallery from "../Gallery/Gallery";
-// importing the Images
-import OntarioPM from "../../../public/Ontario-PM.png";
-import OntarioBridle from "../../../public/Ontario-bridle.png";
-import OntarioWL from "../../../public/Ontario-WL.png";
 
 // Data for the pins
 const pinsData: PinData[] = [

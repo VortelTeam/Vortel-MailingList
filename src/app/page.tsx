@@ -7,7 +7,7 @@ import Topbar from "@/components/Topbar/Topbar";
 import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
 
 export default function Home() {
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [isGalleryOpen] = useState(false);
 
   return (
     <main className="h-screen overflow-hidden relative">
