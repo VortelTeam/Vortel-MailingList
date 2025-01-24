@@ -7,42 +7,21 @@ import Topbar from "@/components/Topbar/Topbar";
 import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
 
 export default function Home() {
-  const [isGalleryOpen] = useState(false);
-
   return (
     <main className="h-screen overflow-hidden relative">
       <WelcomePage />
       <div className="py-8">
         <div className="flex-col">
           <Topbar />
-          <div
-            className={`flex flex-col w-screen text-black font-poppins px-8 transition-all duration-300 h-screen ${
-              isGalleryOpen ? "items-start" : "items-center"
-            } justify-center items-center sm:justify-start sm:items-start sm:h-auto`}
-          >
-            <div
-              className={`text-3xl mt-5 w-full ${
-                isGalleryOpen ? "text-start xl:w-1/2" : "text-center"
-              }`}
-            >
+          <div className="flex flex-col w-screen h-dvh text-black font-poppins px-8 transition-all duration-300 justify-center items-center text-center align-middle sm:justify-start sm:items-center sm:h-auto">
+            <div className="text-3xl w-full text-center sm:mt-12">
               Simplify Compliance, Empower Your Workforce
             </div>
-            <div
-              className={`text-xl flex mt-2 transition-all duration-300 ${
-                isGalleryOpen
-                  ? "justify-start text-start"
-                  : "w-full justify-center text-center"
-              }`}
-            >
-              Combining automation, accuracy, and innovation to help you manage{" "}
-              <br className="hidden md:inline" />
+            <div className="text-xl flex mt-2 transition-all duration-300 w-full justify-center text-center max-w-3xl">
+              Combining automation, accuracy, and innovation to help you manage
               compliance and empower your workforce—effortlessly.
             </div>
-            <div
-              className={`w-fit flex flex-col items-center mt-16 ${
-                isGalleryOpen ? "mx-0 items-start" : "mx-auto"
-              }`}
-            >
+            <div className="w-fit flex flex-col items-center mt-16 mx-auto">
               <div className="flex text-left py-2 w-full">
                 Join our exclusive mailing list
               </div>
@@ -70,7 +49,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden sm:flex sm:w-screen sm:mt-12">
+        <div className="hidden sm:flex sm:w-screen sm:mt-4">
           <InteractiveMap />
         </div>
       </div>
