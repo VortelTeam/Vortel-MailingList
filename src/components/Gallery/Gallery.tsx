@@ -1,29 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
-import type { GalleryImage } from '@/types/gallery'
-import Image from 'next/image'
+import { useState } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import type { GalleryImage } from "@/types/gallery";
+import Image from "next/image";
 
 interface GalleryProps {
-  images: GalleryImage[]
-  isOpen: boolean
-  onClose: () => void
-  location: string
+  images: GalleryImage[];
+  isOpen: boolean;
+  onClose: () => void;
+  location: string;
 }
 
-export default function Gallery({ images, isOpen, onClose, location }: GalleryProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function Gallery({
+  images,
+  isOpen,
+  onClose,
+  location,
+}: GalleryProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
-  }
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
-  }
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <div className="fixed right-0 top-0 h-screen w-[600px] bg-white shadow-xl transition-all duration-500 ease-in-out transform">
@@ -68,7 +73,9 @@ export default function Gallery({ images, isOpen, onClose, location }: GalleryPr
 
         <div className="absolute bottom-8 left-8 right-8">
           <div className="bg-white p-4 shadow-lg rounded-lg">
-            <p className="text-lg text-center text-black">{images[currentIndex].caption}</p>
+            <p className="text-lg text-center text-black">
+              {images[currentIndex].caption}
+            </p>
           </div>
         </div>
 
@@ -79,6 +86,5 @@ export default function Gallery({ images, isOpen, onClose, location }: GalleryPr
         </div>
       </div>
     </div>
-  )
+  );
 }
-

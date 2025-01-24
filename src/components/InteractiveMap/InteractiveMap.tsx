@@ -154,20 +154,20 @@ const InteractiveMap = ({
     }
   }, []);
 
-  const handlePinClick = (
-    event: React.MouseEvent<SVGImageElement, MouseEvent>,
-    pin: PinData
-  ) => {
-    setShowLabel(false);
-    localStorage.setItem("showLabel", JSON.stringify(false));
-    setActivePin(pin);
-    onGalleryOpen();
-  };
+  // const handlePinClick = (
+  //   event: React.MouseEvent<SVGImageElement, MouseEvent>,
+  //   pin: PinData
+  // ) => {
+  //   setShowLabel(false);
+  //   localStorage.setItem("showLabel", JSON.stringify(false));
+  //   setActivePin(pin);
+  //   onGalleryOpen();
+  // };
 
-  const handleCloseGallery = () => {
-    setActivePin(null);
-    onGalleryClose();
-  };
+  // const handleCloseGallery = () => {
+  //   setActivePin(null);
+  //   onGalleryClose();
+  // };
 
   return (
     <div className="w-full h-full">
@@ -9071,23 +9071,23 @@ const InteractiveMap = ({
         {pinsData.map((pin) => (
           <image
             key={pin.id}
-            onClick={(event) => handlePinClick(event, pin)}
+            // onClick={(event) => handlePinClick(event, pin)}
             href={PinPoint.src}
-            width="150"
-            x={markerPosition.x - 58.5}
-            y={markerPosition.y - 62}
+            width="120"
+            x={markerPosition.x - 46.8}
+            y={markerPosition.y - 49}
             className="cursor-pointer bg-blue-400 hover:-translate-y-1 transform transition-transform duration-300"
           />
         ))}
       </svg>
-      {activePin && (
+      {/* {activePin && (
         <Gallery
           images={activePin.images}
           isOpen={!!activePin}
           onClose={handleCloseGallery}
           location={activePin.name}
         />
-      )}
+      )} */}
     </div>
   );
 };

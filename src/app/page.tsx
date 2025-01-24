@@ -25,7 +25,7 @@ export default function Home() {
                 isGalleryOpen ? "text-start xl:w-1/2" : "text-center"
               }`}
             >
-              Powering the Future of Workforce Management
+              Simplify Compliance, Empower Your Workforce
             </div>
             <div
               className={`text-xl flex mt-2 transition-all duration-300 ${
@@ -34,9 +34,9 @@ export default function Home() {
                   : "w-full justify-center text-center"
               }`}
             >
-              Combining speed, precision, and innovation to help you hire, pay,{" "}
+              Combining automation, accuracy, and innovation to help you manage{" "}
               <br className="hidden md:inline" />
-              and manage talent effortlessly—anywhere in the world.
+              compliance and empower your workforce—effortlessly.
             </div>
             <div
               className={`w-fit flex flex-col items-center mt-16 ${
@@ -60,7 +60,7 @@ export default function Home() {
                     className="w-72 px-4 py-3 bg-transparent border-2 border-black rounded-md text-left"
                   />
                   <button
-                  type="submit"
+                    type="submit"
                     className="w-full xs:w-auto px-4 py-3 bg-button-bg border-2 border-black rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200"
                   >
                     Get Started
