@@ -13,7 +13,7 @@ export default function Home() {
       <div className="py-8">
         <div className="flex-col">
           <Topbar />
-          <div className="flex flex-col w-screen h-dvh text-black font-poppins px-8 transition-all duration-300 justify-center items-center text-center align-middle sm:justify-start sm:items-center sm:h-auto">
+          <div className="flex flex-col w-screen h-dvh text-black font-poppins px-10 transition-all duration-300 justify-center items-center text-center align-middle sm:justify-start sm:items-center sm:h-auto">
             <div className="text-3xl w-full text-center sm:mt-12">
               Simplify Compliance, Empower Your Workforce
             </div>
