@@ -9,6 +9,7 @@ import FileUpload from "@/components/FileUpload/FileUpload";
 import FileBar from "@/components/FileBar/FileBar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import ManageWorkforce from "@/components/ManageWorkforce/ManageWorkforce";
 
 export default function Home() {
   return (
@@ -59,8 +60,11 @@ export default function Home() {
         <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
           <DndProvider backend={HTML5Backend}>
             <FileBar />
-          <FileUpload />
+            <FileUpload />
           </DndProvider>
+        </div>
+        <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
+          <ManageWorkforce />
         </div>
       </div>
     </main>

@@ -16,6 +16,8 @@ export default {
         highlight: "#EDC4B3",
         "upload-bg": "#FAEEE9",
         "brand-border": "#9D6B53",
+        select: "#F7E3DB",
+        "alert-red": "#EC1818",
       },
       fontFamily: {
         otomanopee: ["'Otomanopee One'", "sans-serif"],
@@ -24,6 +26,9 @@ export default {
       screens: {
         xs: "495px",
         "1xl": "1365px",
+      },
+      fontSize: {
+        xs: "12px",
       },
     },
   },
