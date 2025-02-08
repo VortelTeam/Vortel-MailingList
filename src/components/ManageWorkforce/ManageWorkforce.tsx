@@ -22,7 +22,6 @@ export default function ManageWorkforce() {
           </div>
         </div>
         <div className="text-black mt-20 gap-2 flex flex-col pl-2">
-          {/* create a table with 7 rows and 2 columns the top row has to be the header rows */}
           <div className="flex justify-between text-gray-500">
             <div className="w-1/2 pl-2">Employee(s)</div>
             <div className="w-1/2">Title</div>

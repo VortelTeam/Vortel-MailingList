@@ -5,7 +5,11 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 
-export default function FileUpload() {
+export default function FileUpload({
+  setShowManageWorkforce,
+}: {
+  setShowManageWorkforce: (value: boolean) => void;
+}) {
   const [uploadingFiles, setUploadingFiles] = useState<
     { name: string; progress: number }[]
   >([]);
@@ -58,7 +62,7 @@ export default function FileUpload() {
     setUploadedFiles((prev) => prev.filter((file) => file.name !== fileName));
 
     if (uploadingFiles.length + uploadedFiles.length === 1) {
-      setIsDropDisabled(false); 
+      setIsDropDisabled(false);
     }
   };
 
@@ -76,7 +80,9 @@ export default function FileUpload() {
         }}
         className={`bg-upload-bg flex flex-col justify-center items-center h-[467px] border-dashed border-2 border-brand-border rounded-lg gap-2 p-6 ${
           isOver ? "bg-gray-100" : ""
-        } ${isDropDisabled ? "opacity-50 pointer-events-none max-h-[202px]" : ""}`}
+        } ${
+          isDropDisabled ? "opacity-50 pointer-events-none max-h-[202px]" : ""
+        }`}
       >
         <IoCloudUploadOutline className="h-16 w-16 text-brand-brown font-light" />
         <div className="text-black font-bold mt-4">
@@ -148,9 +154,17 @@ export default function FileUpload() {
         </div>
       )}
 
-      <div className="text-black font-bold text-center w-full px-4 py-3 mt-auto bg-button-bg rounded-md hover:cursor-pointer hover:bg-highlight ease-in-out duration-200">
+      <button
+        disabled={uploadedFiles.length === 0}
+        onClick={() => setShowManageWorkforce(true)}
+        className={`text-black font-bold text-center w-full px-4 py-3 mt-auto rounded-md transition-all duration-200 ${
+          uploadedFiles.length > 0
+            ? "bg-button-bg hover:bg-highlight cursor-pointer"
+            : "bg-gray-300 cursor-not-allowed"
+        }`}
+      >
         Upload Files
-      </div>
+      </button>
     </div>
   );
 }

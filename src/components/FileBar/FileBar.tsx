@@ -29,7 +29,7 @@ export default function FileBar() {
   };
 
   return (
-    <div className="w-full h-16 py-6 bg-upload-bg flex items-center p-2 border border-t-black border-b-black">
+    <div className="w-full h-16 py-10 bg-upload-bg flex flex-col-reverse justify-center items-center p-2 border border-t-black border-b-black">
       <div
         ref={drag}
         className={`cursor-grab p-2 rounded-md bg-white shadow-md ${
@@ -42,7 +42,7 @@ export default function FileBar() {
       </div>
 
       <div className="text-black text-base ml-4">
-        &larr; Double click to view the Data from CSV file, and then drag and
+        Double click to view the Data from CSV file, and then drag and
         drop in the Upload space see Vortel work.
       </div>
 
