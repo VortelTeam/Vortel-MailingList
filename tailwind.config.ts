@@ -14,6 +14,8 @@ export default {
         "brand-brown": "#774936",
         "button-bg": "#E6B8A2",
         highlight: "#EDC4B3",
+        "upload-bg": "#FAEEE9",
+        "brand-border": "#9D6B53",
       },
       fontFamily: {
         otomanopee: ["'Otomanopee One'", "sans-serif"],

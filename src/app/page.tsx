@@ -5,12 +5,16 @@ import React from "react";
 import WelcomePage from "@/components/WelcomePage/WelcomePage";
 import Topbar from "@/components/Topbar/Topbar";
 import InteractiveMap from "@/components/InteractiveMap/InteractiveMap";
+import FileUpload from "@/components/FileUpload/FileUpload";
+import FileBar from "@/components/FileBar/FileBar";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 export default function Home() {
   return (
-    <main className="h-screen overflow-hidden relative">
+    <main className="h-screen overflow-x-hidden relative">
       <WelcomePage />
-      <div className="py-8">
+      <div className="pt-8">
         <div className="flex-col">
           <Topbar />
           <div className="flex flex-col w-screen h-dvh text-black font-poppins px-10 transition-all duration-300 justify-center items-center text-center align-middle sm:justify-start sm:items-center sm:h-auto">
@@ -51,6 +55,12 @@ export default function Home() {
         </div>
         <div className="hidden sm:flex sm:w-screen sm:mt-4">
           <InteractiveMap />
+        </div>
+        <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
+          <DndProvider backend={HTML5Backend}>
+            <FileBar />
+          <FileUpload />
+          </DndProvider>
         </div>
       </div>
     </main>
