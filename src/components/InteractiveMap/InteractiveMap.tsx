@@ -142,7 +142,16 @@ const InteractiveMap = () => {
             <image href={PinPoint.src} width="24" height="24" x="0" y="0" />
           </marker>
         </defs>
-        <g filter="url(#filter0_dddd_54_8983)">
+        <defs>
+          <linearGradient id="fadeGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="white" stopOpacity="1" />
+            <stop offset="60%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+          <mask id="fadeMask">
+            <rect width="100%" height="100%" fill="url(#fadeGradient)" />
+          </mask>
+        </defs>
+        <g filter="url(#filter0_dddd_54_8983)" mask="url(#fadeMask)">
           <path
             d="M796.606 428.235H789.406L785.806 422.063L789.406 415.892H796.606L800.103 422.063L796.606 428.235Z"
             fill="white"
