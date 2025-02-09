@@ -1,11 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { FaFile, FaForward, FaTrash } from "react-icons/fa";
+import {
+  FaRegFilePdf,
+  FaForward,
+  FaRegTrashAlt,
+  FaRegFileImage,
+  FaRegFileExcel,
+} from "react-icons/fa";
 import { FaBackwardStep, FaForwardStep } from "react-icons/fa6";
 import { IoCloudUploadOutline } from "react-icons/io5";
 
-export default function ManageWorkforce() {
+export default function ManageWorkforce({
+  setShowDashboardView,
+  setTriggerPopup,
+}: {
+  setShowDashboardView: (value: boolean) => void;
+  setTriggerPopup: (value: boolean) => void;
+}) {
   const [parseContinue, setParseContinue] = useState(false);
 
   const parseAndContinue = () => {
@@ -93,13 +105,13 @@ export default function ManageWorkforce() {
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">Passport.pdf</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">LicenseImage.jpeg</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                   <div className="text-gray-500 font-bold text-sm">
@@ -112,7 +124,7 @@ export default function ManageWorkforce() {
                 <div className="flex justify-between align-middle items-center mt-2">
                   <div className="text-base">CanadianCitizenship.pdf</div>
                   <div>
-                    <FaTrash className="text-alert-red text-base cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                    <FaRegTrashAlt className="text-alert-red text-base cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                   </div>
                 </div>
               </div>
@@ -121,7 +133,7 @@ export default function ManageWorkforce() {
                 <div className="flex justify-between align-middle items-center mt-2">
                   <div className="text-base">Vortel_Offer_Letter2024.pdf</div>
                   <div>
-                    <FaTrash className="text-alert-red text-base cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                    <FaRegTrashAlt className="text-alert-red text-base cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                   </div>
                 </div>
               </div>
@@ -147,25 +159,25 @@ export default function ManageWorkforce() {
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">VortelOnboardingFile.pdf</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">TaxReturn_2025.pdf</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">Timesheet_Record.csv</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                   <div className="bg-white border border-brand-border rounded-md p-2 flex justify-between">
                     <div className="text-sm">Medical_Record.pdf</div>
                     <div className="flex justify-between items-center">
-                      <FaTrash className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
+                      <FaRegTrashAlt className="text-alert-red text-sm cursor-pointer hover:text-red-900 transition-all ease-in-out" />
                     </div>
                   </div>
                 </div>
@@ -291,14 +303,14 @@ export default function ManageWorkforce() {
               <div className="flex justify-between align-middle items-center mt-2 gap-4">
                 <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                   <span>
-                    <FaFile className="text-gray-500" />
+                    <FaRegFilePdf className="text-gray-500" />
                   </span>
                   <span>Passport.pdf</span>
                   <span className="ml-auto text-gray-500">1/2</span>
                 </div>
                 <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                   <span>
-                    <FaFile className="text-gray-500" />
+                    <FaRegFileImage className="text-gray-500" />
                   </span>
                   <span>License.jpeg</span>
                   <span className="ml-auto text-gray-500">2/2</span>
@@ -313,7 +325,7 @@ export default function ManageWorkforce() {
               <div className="flex mt-2">
                 <div className="w-full flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                   <span>
-                    <FaFile className="text-gray-500" />
+                    <FaRegFilePdf className="text-gray-500" />
                   </span>
                   <span>CanadianCitizenship.pdf</span>
                   <span className="ml-auto text-gray-500">1/1</span>
@@ -323,7 +335,7 @@ export default function ManageWorkforce() {
               <div className="flex mt-2">
                 <div className="w-full flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                   <span>
-                    <FaFile className="text-gray-500" />
+                    <FaRegFilePdf className="text-gray-500" />
                   </span>
                   <span>Vortel_Offer_Letter2024.pdf</span>
                   <span className="ml-auto text-gray-500">1/1</span>
@@ -334,14 +346,14 @@ export default function ManageWorkforce() {
                 <div className="flex w-full gap-4 justify-between align-middle items-center">
                   <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                     <span>
-                      <FaFile className="text-gray-500" />
+                      <FaRegFilePdf className="text-gray-500" />
                     </span>
                     <span>VortelOnboardingFile.pdf</span>
                     <span className="ml-auto text-gray-500">1/4</span>
                   </div>
                   <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                     <span>
-                      <FaFile className="text-gray-500" />
+                      <FaRegFilePdf className="text-gray-500" />
                     </span>
                     <span>TaxReturn_2025.pdf</span>
                     <span className="ml-auto text-gray-500">2/4</span>
@@ -350,7 +362,7 @@ export default function ManageWorkforce() {
                 <div className="flex w-full gap-4 justify-between align-middle items-center">
                   <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                     <span>
-                      <FaFile className="text-gray-500" />
+                      <FaRegFileExcel className="text-gray-500" />
                     </span>
                     <span>Timesheet_Record.csv</span>
 
@@ -358,7 +370,7 @@ export default function ManageWorkforce() {
                   </div>
                   <div className="w-1/2 flex gap-2 justify-start align-middle items-center border border-black px-2 py-2 rounded-lg">
                     <span>
-                      <FaFile className="text-gray-500" />
+                      <FaRegFilePdf className="text-gray-500" />
                     </span>
                     <span>Medical_Record.pdf</span>
                     <span className="ml-auto text-gray-500">4/4</span>
@@ -374,7 +386,12 @@ export default function ManageWorkforce() {
                   Back to Upload
                 </div>
                 <div
-                  onClick={parseAndContinue}
+                  onClick={() => {
+                    setShowDashboardView(true);
+                    setTimeout(() => {
+                      setTriggerPopup(true);
+                    }, 1000);
+                  }}
                   className="flex px-4 py-2 align-middle items-center bg-button-bg border-2 border-black rounded-lg hover:cursor-pointer hover:bg-highlight ease-in-out duration-200"
                 >
                   Finish and Continue

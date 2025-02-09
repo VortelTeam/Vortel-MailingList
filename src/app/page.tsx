@@ -10,9 +10,14 @@ import FileBar from "@/components/FileBar/FileBar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import ManageWorkforce from "@/components/ManageWorkforce/ManageWorkforce";
+import DashboardView from "@/components/DashboardView/DashboardView";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [showManageWorkforce, setShowManageWorkforce] = useState(false);
+  const [showDashboardView, setShowDashboardView] = useState(false);
+  const [triggerPopup, setTriggerPopup] = useState(false);
 
   return (
     <main className="h-screen overflow-x-hidden relative">
@@ -31,7 +36,7 @@ export default function Home() {
               </div>
               <div className="w-fit flex flex-col items-center mt-16 mx-auto">
                 <div className="flex text-left py-2 w-full">
-                  Join our exclusive mailing list
+                  Interested? Join our wait-list!
                 </div>
                 <form
                   action="https://public.herotofu.com/v1/8b326ca0-ca65-11ef-9788-bfcf6eb47463"
@@ -61,18 +66,40 @@ export default function Home() {
             <InteractiveMap />
           </div>
         </div>
-        {!showManageWorkforce ? (
-          <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
-            <DndProvider backend={HTML5Backend}>
-              <FileBar />
-              <FileUpload setShowManageWorkforce={setShowManageWorkforce} />
-            </DndProvider>
-          </div>
-        ) : (
-          <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
-            <ManageWorkforce />
-          </div>
-        )}
+        <div className="hide-below-1355">
+          <motion.div
+            className="w-full flex flex-col justify-center align-middle items-center text-4xl font-bold text-black text-center"
+            animate={{ y: [0, 20, 0] }} // Moves up and down
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} // Smooth infinite animation
+          >
+            <div>Try It Out Below</div>
+            <MdKeyboardDoubleArrowDown />
+          </motion.div>
+          {!showDashboardView ? (
+            !showManageWorkforce ? (
+              <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
+                <DndProvider backend={HTML5Backend}>
+                  <FileBar />
+                  <FileUpload setShowManageWorkforce={setShowManageWorkforce} />
+                </DndProvider>
+              </div>
+            ) : (
+              <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
+                <ManageWorkforce
+                  setShowDashboardView={setShowDashboardView}
+                  setTriggerPopup={setTriggerPopup}
+                />
+              </div>
+            )
+          ) : (
+            <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
+              <DashboardView
+                triggerPopup={triggerPopup}
+                setTriggerPopup={setTriggerPopup}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );

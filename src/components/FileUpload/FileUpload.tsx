@@ -2,7 +2,7 @@
 
 import { useDrop } from "react-dnd";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { FaTrash } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { useState } from "react";
 
 export default function FileUpload({
@@ -110,7 +110,7 @@ export default function FileUpload({
               className="flex justify-between items-center mt-2 px-4"
             >
               <span className="text-black font-semibold">{file.name}</span>
-              <FaTrash
+              <FaRegTrashAlt
                 className="text-red-600 cursor-pointer"
                 onClick={() => removeFile(file.name)}
               />
@@ -145,7 +145,7 @@ export default function FileUpload({
               className="flex justify-between items-center mt-2 px-4"
             >
               <span className="text-black font-semibold">{file.name}</span>
-              <FaTrash
+              <FaRegTrashAlt
                 className="text-red-600 cursor-pointer"
                 onClick={() => removeFile(file.name)}
               />

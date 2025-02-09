@@ -37,3 +37,9 @@ body {
 svg path {
   transition: fill 0.2s ease-in-out;
 }
+
+@media (max-width: 1355px) {
+  .hide-below-1355 {
+    display: none;
+  }
+}
