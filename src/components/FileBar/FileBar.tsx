@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDrag } from "react-dnd";
 import Papa from "papaparse";
 import { FaFileInvoice } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaFileInvoice } from "react-icons/fa";
 export default function FileBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [csvData, setCsvData] = useState<string[][]>([]);
+  const dragRef = useRef<HTMLDivElement>(null);
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "FILE",
@@ -15,6 +16,8 @@ export default function FileBar() {
       isDragging: monitor.isDragging(),
     }),
   }));
+
+  drag(dragRef);
 
   const fetchCSV = async () => {
     try {
@@ -31,7 +34,7 @@ export default function FileBar() {
   return (
     <div className="w-full h-16 py-10 bg-upload-bg flex flex-col-reverse justify-center items-center p-2 border border-t-black border-b-black">
       <div
-        ref={drag}
+        ref={dragRef}
         className={`cursor-grab p-2 rounded-md bg-white shadow-md ${
           isDragging ? "opacity-50" : "opacity-100"
         }`}
@@ -42,8 +45,8 @@ export default function FileBar() {
       </div>
 
       <div className="text-black text-base ml-4">
-        Double click to view the Data from CSV file, and then drag and
-        drop in the Upload space see Vortel work.
+        Double click to view the Data from CSV file, and then drag and drop in
+        the Upload space see Vortel work.
       </div>
 
       {isOpen && (
