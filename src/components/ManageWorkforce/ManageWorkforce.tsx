@@ -183,7 +183,7 @@ export default function ManageWorkforce({
               </div>
               <div className="flex justify-between align-middle items-center mt-4">
                 <div className="text-base text-gray-500">
-                  Samuel's documents can 100% complete the form
+                  Samuel&#39;s documents can 100% complete the form
                 </div>
                 <div
                   onClick={parseAndContinue}
