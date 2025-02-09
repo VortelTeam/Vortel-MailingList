@@ -68,13 +68,15 @@ export default function Home() {
         </div>
         <div className="hide-below-1355">
           <motion.div
-            className="w-full flex flex-col justify-center align-middle items-center text-4xl font-bold text-black text-center"
+            className="w-full flex flex-col justify-center align-middle items-center text-4xl font-bold text-black text-center relative -top-36"
             animate={{ y: [0, 20, 0] }} // Moves up and down
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} // Smooth infinite animation
           >
             <div>Try It Out Below</div>
             <MdKeyboardDoubleArrowDown />
           </motion.div>
+        </div>
+        <div className="hide-below-1355">
           {!showDashboardView ? (
             !showManageWorkforce ? (
               <div className="h-dvh flex flex-col justify-around items-center m-auto w-screen ">
